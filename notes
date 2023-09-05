@@ -1,0 +1,22 @@
+sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
+
+country=IN
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+ap_scan=1
+
+update_config=1
+network={
+        ssid="Adhrit_1"
+        psk="Baban2016"
+}
+
+sudo wpa_supplicant -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+
+sudo vi /etc/network/interfaces.d/wlan0
+
+allow-hotplug wlan0
+iface wlan0 inet dhcp
+wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp
+
+sudo reboot
